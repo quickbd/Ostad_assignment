@@ -1,0 +1,21 @@
+<!--15.AJAX Post Request:
+a. Implement a JavaScript function that sends an AJAX POST request to the following URL: "https://api.example.com/submit".
+b. Send a JSON payload with the following data: { "name": "John Doe", "email": "johndoe@example.com" }. -->
+
+<script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+
+<script>
+  //a. Implement a JavaScript function that sends an AJAX POST request
+  async function postData(data) {
+    let URL = `https://api.example.com/submit`;
+
+    let res = await axios.post(URL, {
+      name: data.name,
+      email: data.email,
+    });
+  }
+
+  //b. Send a JSON payload with the following data: { "name": "John Doe", "email": "johndoe@example.com" }
+  let mydata = { name: "John Doe", email: "johndoe@example.com" };
+  postData(mydata);
+</script>

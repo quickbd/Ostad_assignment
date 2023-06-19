@@ -1,0 +1,99 @@
+9. JS DOM Working with Form Input: Implement a webpage with a form that has the
+following fields: a. Name (text input) b. Email (email input) c. Password
+(password input) d. Confirm Password (password input) e. Submit (button)
+Implement JavaScript validation for the form fields: f. Name should not be empty
+and should contain only letters. g. Email should be a valid email address. h.
+Password should have a minimum length of 8 characters and contain at least one
+uppercase letter, one lowercase letter, and one digit. i. Confirm Password
+should match the Password field. j. Display appropriate error messages for
+invalid fields.
+
+
+
+<html>
+   <head>
+      <title>Form Validation</title>
+      <style>
+         .error {
+            color: red;
+         }
+      </style>
+   </head>
+   <body>
+      <form action="" id="myform" onsubmit="return validateForm()" method="post">
+         <div>
+            <label for="name">Name:</label>
+            <input type="text" name="name" id="name" />
+            <span class="error" id="nameError"></span>
+         </div>
+         <div>
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" />
+            <span class="error" id="emailError"></span>
+         </div>
+         <div>
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" />
+            <span class="error" id="passwordError"></span>
+         </div>
+         <div>
+            <label for="confirmPassword">Confirm Password
+                <input type="password" name="confirm_password" id="confirm_password" />
+                <span class="error" id="confirmPasswordError"></span>
+             </div>
+             <div>
+                 <button type="Submit">Submit</button>
+                 </div>     
+             </form>
+
+             <script language="JavaScript">
+                function onlyLettersAndSpaces(str) {
+                   return /^[A-Za-z\s]*$/.test(str);
+                 }
+
+                 function validateEmail(email) {
+  const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(email).toLowerCase());
+}
+
+
+             function validateForm() {
+                   var confirm_password = document.getElementById('confirm_password').value;
+                   var reg_password = document.getElementById('password').value;
+
+          //  alert(validateEmail(document.getElementById('email').value   )
+
+                if (document.getElementById('name').value === '') {
+                    alert('Name should not be empty')
+                    return false;
+                }
+                else if (document.getElementById('name').value != '' && onlyLettersAndSpaces(document.getElementById('name').value )=== false ) {
+                    alert('Should contain only letters')
+                    return false;
+                }else  if (document.getElementById('email').value != '' && validateEmail(document.getElementById('email').value )) {
+                     alert('Email should be a valid email address')
+                    return false;
+                }else if (document.getElementById('password').value.length < 8){
+		              errorMessage = "Password length must be minimum 8 character"; 
+		 	            alert(errorMessage);				   
+					 return false;
+		           }else if(/[\*\^\@#%&$~'\!]/.test(reg_password) && /\d/.test(reg_password) && /[a-z]/.test(reg_password) && /[A-Z]/.test(reg_password))
+	                { 
+                        //Has at least 1 uppercase 1 lowercase 1 number and is only alphanumeric
+	                    }else{
+		             errorMessage = "Password should contain at least 1 uppercase, 1 lowercase, 1 number and is only alphanumeric";
+                        alert(errorMessage)
+                        return false;
+                        }
+	  
+	 
+	          if ( confirm_password != reg_password ) { 
+					errorMessage = "The passwords you've entered don't match."; 
+		              alert(errorMessage)
+					 return false;
+				} 
+ 
+                return true
+
+            }
+            </script>

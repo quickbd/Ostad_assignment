@@ -1,0 +1,37 @@
+//7.JS Common Events: //Implement a webpage with the following functionality:
+<p>
+  a. When the user clicks anywhere on the page, display an alert with the
+  coordinates (x, y) of the click.
+</p>
+
+<script language="JavaScript">
+  document.addEventListener("click", (event) => {
+    const x = event.clientX;
+    const y = event.clientY;
+    alert(`Coordinates: (${x}, ${y})`);
+  });
+</script>
+
+<p>
+  b. When the user presses any key on the keyboard, display an alert with the
+  key code of the pressed key.
+</p>
+
+<script>
+  document.onkeydown = function (event) {
+    alert("Key code: " + event.keyCode);
+  };
+</script>
+
+<p>
+  c. When the user moves the mouse over an image, change the image source to
+  another image of your choice.
+</p>
+<img src="https://picsum.photos/id/118/1500/1000" />
+<script>
+  let image = document.querySelector("img");
+
+  image.addEventListener("mouseover", function () {
+    image.src = "https://picsum.photos/id/12/2500/1667";
+  });
+</script>
