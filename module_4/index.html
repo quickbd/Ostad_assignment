@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="dist/output.css" />
+    <link
+      rel="stylesheet"
+      href="node_modules/@fortawesome/fontawesome-free/css/all.css"
+    />
+  </head>
+
+  <body data-theme="cupcake">
+    <div class="navbar bg-blend-darken">
+      <div class="flex-1">
+        <a class="btn btn-ghost normal-case text-xl">My Shopping Cart</a>
+      </div>
+
+      <div class="flex-none">
+        <div class="dropdown dropdown-end">
+          <label
+            tabindex="0"
+            class="btn btn-ghost btn-circle"
+            onclick="myshoppingcart.showModal()"
+          >
+            <div class="indicator">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                />
+              </svg>
+
+              <span class="badge badge-sm indicator-item total-count">0</span>
+            </div>
+          </label>
+        </div>
+        <div class="dropdown dropdown-end">
+          <label tabindex="0" class="btn btn-ghost btn-circle avatar">
+            <div class="w-10 rounded-full">
+              <img src="/assets/images/avatar.png" />
+            </div>
+          </label>
+          <ul
+            tabindex="0"
+            class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+          >
+            <li>
+              <a class="justify-between">
+                Profile
+                <span class="badge">New</span>
+              </a>
+            </li>
+            <li><a>Settings</a></li>
+            <li><a>Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="carousel w-full">
+      <div id="slide1" class="carousel-item relative w-full">
+        <img src="./assets/images/banner-bg.jpg" class="w-full" />
+        <div
+          class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2"
+        >
+          <a href="#slide1" class="btn btn-circle">❮</a>
+          <a href="#slide2" class="btn btn-circle">❯</a>
+        </div>
+      </div>
+      <div id="slide2" class="carousel-item relative w-full">
+        <img src="./assets/images/offer.jpg" class="w-full" />
+        <div
+          class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2"
+        >
+          <a href="#slide2" class="btn btn-circle">❮</a>
+          <a href="#slide1" class="btn btn-circle">❯</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- related product -->
+    <div class="container mb-16 m-auto my-5">
+      <h2 class="text-2xl font-medium text-gray-800 uppercase mb-6">
+        Product's Gallery
+      </h2>
+
+      <div class="grid grid-cols-4 gap-6" id="productContent"></div>
+    </div>
+    <!-- ./related product -->
+
+    <!-- footer -->
+    <footer class="bg-white pt-16 pb-12 border-t border-gray-100">
+      <div class="container grid grid-cols-3 m-auto">
+        <div class="col-span-1 space-y-8 mr-2">
+          <h1>My Shopping Cart</h1>
+
+          <div class="mr-2">
+            <p class="text-gray-500">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia,
+              hic?
+            </p>
+          </div>
+          <div class="flex space-x-6">
+            <a href="#" class="text-gray-400 hover:text-gray-500"
+              ><i class="fa-brands fa-facebook-square"></i
+            ></a>
+            <a href="#" class="text-gray-400 hover:text-gray-500"
+              ><i class="fa-brands fa-instagram-square"></i
+            ></a>
+            <a href="#" class="text-gray-400 hover:text-gray-500"
+              ><i class="fa-brands fa-twitter-square"></i
+            ></a>
+            <a href="#" class="text-gray-400 hover:text-gray-500">
+              <i class="fa-brands fa-github-square"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="col-span-2 grid grid-cols-2 gap-8">
+          <div class="grid grid-cols-2 gap-8">
+            <div>
+              <h3
+                class="text-sm font-semibold text-gray-400 uppercase tracking-wider"
+              >
+                Solutions
+              </h3>
+              <div class="mt-4 space-y-4">
+                <a
+                  href="#"
+                  class="text-base text-gray-500 hover:text-gray-900 block"
+                  >Marketing</a
+                >
+                <a
+                  href="#"
+                  class="text-base text-gray-500 hover:text-gray-900 block"
+                  >Analitycs</a
+                >
+                <a
+                  href="#"
+                  class="text-base text-gray-500 hover:text-gray-900 block"
+                  >Commerce</a
+                >
+                <a
+                  href="#"
+                  class="text-base text-gray-500 hover:text-gray-900 block"
+                  >Insights</a
+                >
+              </div>
+            </div>
+
+            <div>
+              <h3
+                class="text-sm font-semibold text-gray-400 uppercase tracking-wider"
+              >
+                Support
+              </h3>
+              <div class="mt-4 space-y-4">
+                <a
+                  href="#"
+                  class="text-base text-gray-500 hover:text-gray-900 block"
+                  >Pricing</a
+                >
+                <a
+                  href="#"
+                  class="text-base text-gray-500 hover:text-gray-900 block"
+                  >My Account</a
+                >
+                <a
+                  href="#"
+                  class="text-base text-gray-500 hover:text-gray-900 block"
+                  >Tearm & Conditions</a
+                >
+                <a
+                  href="#"
+                  class="text-base text-gray-500 hover:text-gray-900 block"
+                  >Return Policy</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-8">
+            <div>
+              <h3
+                class="text-sm font-semibold text-gray-400 uppercase tracking-wider"
+              >
+                Solutions
+              </h3>
+              <div class="mt-4 space-y-4">
+                <a
+                  href="#"
+                  class="text-base text-gray-500 hover:text-gray-900 block"
+                  >Marketing</a
+                >
+                <a
+                  href="#"
+                  class="text-base text-gray-500 hover:text-gray-900 block"
+                  >Analitycs</a
+                >
+                <a
+                  href="#"
+                  class="text-base text-gray-500 hover:text-gray-900 block"
+                  >Commerce</a
+                >
+                <a
+                  href="#"
+                  class="text-base text-gray-500 hover:text-gray-900 block"
+                  >Insights</a
+                >
+              </div>
+            </div>
+
+            <div>
+              <h3
+                class="text-sm font-semibold text-gray-400 uppercase tracking-wider"
+              >
+                Support
+              </h3>
+              <div class="mt-4 space-y-4">
+                <a
+                  href="#"
+                  class="text-base text-gray-500 hover:text-gray-900 block"
+                  >Pricing</a
+                >
+                <a
+                  href="#"
+                  class="text-base text-gray-500 hover:text-gray-900 block"
+                  >Documentation</a
+                >
+                <a
+                  href="#"
+                  class="text-base text-gray-500 hover:text-gray-900 block"
+                  >Guides</a
+                >
+                <a
+                  href="#"
+                  class="text-base text-gray-500 hover:text-gray-900 block"
+                  >API Status</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- ./footer -->
+
+    <!-- copyright -->
+    <div class="bg-gray-800 py-4">
+      <div class="container m-auto flex items-center justify-between">
+        <p class="text-white">&copy; Md.Hasanat Zamil - All Right Reserved</p>
+        <div>Payment Cards images</div>
+      </div>
+    </div>
+    <!-- ./copyright -->
+  </body>
+
+  <script src="./assets/js/axios.min.js"></script>
+  <script>
+    async function getList() {
+      // document.getElementById("loader").classList.remove("d-none");
+      let URL = "./assets/json/products.json";
+      await axios
+        .get(URL)
+        .then((response) => {
+          response.data.products.forEach((item) => {
+            let productPrice = (
+              item.price -
+              (item.price * item.discountPercentage) / 100
+            ).toFixed(2);
+
+            document.getElementById("productContent").innerHTML += `
+        <div class="bg-white shadow rounded overflow-hidden group height-{100px}">
+          <div class="relative ">
+            <img
+              src="${item.thumbnail}"
+              alt="${item.title}"
+              class="w-full  height-{100px}"
+            />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition"
+            >
+              <a
+                href="#"
+                class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
+                title="view product"
+              >
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </a>
+              <a
+                href="javascript:;"  data-name="${item.id}"
+                class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
+                title="add to wishlist"
+              >
+                <i class="fa-solid fa-heart"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="pt-4 pb-3 px-4">
+            <a href="#">
+              <h4
+                class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition"
+              >
+                ${item.title}
+              </h4>
+            </a>
+            <div class="flex items-baseline mb-1 space-x-2">
+              <p class="text-xl text-primary font-semibold">$${productPrice}</p>
+              <p class="text-sm text-gray-400 line-through">$${item.price}</p>
+            </div>
+            <div class="flex items-center">
+              <div class="flex gap-1 text-sm text-yellow-400">
+                <span><i class="fa-solid fa-star"></i></span>
+                <span><i class="fa-solid fa-star"></i></span>
+                <span><i class="fa-solid fa-star"></i></span>
+                <span><i class="fa-solid fa-star"></i></span>
+                <span><i class="fa-solid fa-star"></i></span>
+              </div>
+              <div class="text-xs text-gray-500 ml-3">(150)</div>
+            </div>
+
+          </div>
+          <a   href="javascript:;"  data-id="${item.id}" data-name="${item.title}" data-price="${productPrice}"
+            class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition addtocart"
+            >Add to cart</a>
+        </div> `;
+            console.log(item.title);
+          });
+          myCart();
+        })
+        .catch((err) => {
+          dispatch({ type: "FETCH_USERS_REJECTED", payload: err });
+        });
+    }
+
+    getList(); ////load products from json
+
+    let shoppingCart = (function () {
+      cart = [];
+      var obj = {};
+
+      function Item(name, price, count) {
+        this.name = name;
+        this.price = price;
+        this.count = count;
+      }
+
+      // Save cart
+      function saveCart() {
+        localStorage.setItem("shoppingCart", JSON.stringify(cart));
+      }
+
+      // Load cart
+      function loadCart() {
+        cart = JSON.parse(localStorage.getItem("shoppingCart"));
+      }
+      if (localStorage.getItem("shoppingCart") != null) {
+        loadCart();
+      }
+
+      // Add to cart
+      obj.addItemToCart = function (name, price, count) {
+        for (var item in cart) {
+          if (cart[item].name === name) {
+            cart[item].count++;
+            saveCart();
+            return;
+          }
+        }
+        var item = new Item(name, price, count);
+        cart.push(item);
+        saveCart();
+      };
+
+      // Set count from item
+      obj.setCountForItem = function (name, count) {
+        for (var i in cart) {
+          if (cart[i].name === name) {
+            cart[i].count = count;
+            break;
+          }
+        }
+      };
+      // Remove item from cart
+      obj.removeItemFromCart = function (name) {
+        for (var item in cart) {
+          if (cart[item].name === name) {
+            cart[item].count--;
+            if (cart[item].count === 0) {
+              cart.splice(item, 1);
+            }
+            break;
+          }
+        }
+        saveCart();
+      };
+
+      // Remove all items from cart
+      obj.removeItemFromCartAll = function (name) {
+        for (var item in cart) {
+          if (cart[item].name === name) {
+            cart.splice(item, 1);
+            break;
+          }
+        }
+        saveCart();
+      };
+
+      // Clear cart
+      obj.clearCart = function () {
+        cart = [];
+        saveCart();
+      };
+
+      // Count cart
+      obj.totalCount = function () {
+        var totalCount = 0;
+        for (var item in cart) {
+          totalCount += cart[item].count;
+        }
+        return totalCount;
+      };
+
+      // Total cart
+      obj.totalCart = function () {
+        var totalCart = 0;
+        for (var item in cart) {
+          totalCart += cart[item].price * cart[item].count;
+        }
+        return Number(totalCart.toFixed(2));
+      };
+
+      // List cart
+      obj.listCart = function () {
+        var cartCopy = [];
+        for (i in cart) {
+          item = cart[i];
+          itemCopy = {};
+          for (p in item) {
+            itemCopy[p] = item[p];
+          }
+          itemCopy.total = Number(item.price * item.count).toFixed(2);
+          cartCopy.push(itemCopy);
+        }
+        return cartCopy;
+      };
+
+      return obj;
+    })();
+
+    //////////add to cart//////
+    let myCart = () => {
+      // Add item
+
+      const addtocart = document.querySelectorAll(".addtocart");
+      addtocart.forEach((el) =>
+        el.addEventListener("click", (event) => {
+          event.preventDefault();
+
+          var name = event.target.getAttribute("data-name");
+          var id = event.target.getAttribute("data-id");
+          var price = Number(event.target.getAttribute("data-price"));
+          shoppingCart.addItemToCart(name, price, 1);
+          displayCart();
+          //console.log(event.target.getAttribute("data-price"));
+        })
+      );
+
+      // Clear items
+      const removeBtn = document.getElementById("removeAll");
+
+      removeBtn.addEventListener("click", () => {
+        shoppingCart.clearCart();
+        displayCart();
+      });
+
+      function displayCart() {
+        var cartArray = shoppingCart.listCart();
+        var output = "";
+        for (var i in cartArray) {
+          output += `<tr><td><button type="button" class="delete-item btn-link btn-xs btn-danger"
+             data-name="${cartArray[i].name}" >x</button> ${cartArray[i].name} </td> <td> ${cartArray[i].price} X </td>
+            <td><div class="input-group"><input type="number" class="item-count form-control"
+            data-name="${cartArray[i].name}"  value="${cartArray[i].count}"></div></td>
+            <td></td> =<td>${cartArray[i].total}</td></tr>`;
+        }
+        // let element = document.querySelector(".total-count");
+        // element.textContent = "sadfasdf";
+
+        document.querySelector(".show-cart").innerHTML = output;
+        document.querySelector(".total-cart").innerHTML =
+          shoppingCart.totalCart();
+        document.querySelector(".total-count").innerHTML =
+          shoppingCart.totalCount();
+        deleteCart();
+      }
+
+      // Delete item button
+      function deleteCart() {
+        let deleteItem = document.querySelectorAll(".delete-item");
+        deleteItem.forEach((el) =>
+          el.addEventListener("click", (event) => {
+            event.preventDefault();
+
+            var name = event.target.getAttribute("data-name");
+
+            shoppingCart.removeItemFromCartAll(name);
+            displayCart();
+          })
+        );
+      }
+      displayCart();
+    };
+  </script>
+
+  <dialog id="myshoppingcart" class="modal modal-bottom sm:modal-middle">
+    <h5 class="modal-title" id="staticBackdropLabel">Your Cart</h5>
+    <form method="dialog" class="modal-box">
+      <div class="modal-body">
+        <table class="show-cart table"></table>
+        <div class="grand-total">
+          <hr />
+          Total price: <span class="total-cart"></span> Tk.
+        </div>
+      </div>
+
+      <button type="button" class="font-bold clear-cart" id="removeAll">
+        Clear cart
+      </button>
+
+      <div class="modal-action text-right">
+        <!-- if there is a button in form, it will close the modal -->
+        <button class="btn">Close</button>
+      </div>
+    </form>
+  </dialog>
+</html>

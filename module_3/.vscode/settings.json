@@ -1,0 +1,27 @@
+{
+ 
+  "background.style": {
+    
+    "content": "''",
+    "pointer-events": "none",
+    "position": "absolute",
+    "z-index": "99999",
+    "width": "50%",
+    "height": "100%",  
+    "background-size": "cover",  
+    "background-repeat": "no-repeat",
+    "background-position": "right",
+    "opacity": 1
+  }, 
+  "background.customImages": [
+    "D:/ostad/logo.png",
+]
+  "background.fullscreen": {
+    0_enabled
+    "image": "file:///D:/ostad/logo.png",
+    "images": ["file:///D:/ostad/logo.png"],
+    "opacity": 0.91, 
+    "position": "center",
+    "interval": 0
+  }
+}

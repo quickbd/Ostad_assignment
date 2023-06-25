@@ -10,7 +10,6 @@ function getDayofWeek(date){
 }
 console.log(getDayofWeek('mm-dd-yyyy'));
 
-
 /*b. Implement the function to display the day of the week for the current date.
 
 Solution:*/
@@ -22,3 +21,4 @@ function getWeekDay() {
 } 
 console.log(getWeekDay());
 
+ 
