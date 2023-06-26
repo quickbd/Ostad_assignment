@@ -629,7 +629,7 @@
       obj.totalCount = function () {
         var totalCount = 0;
         for (var item in cart) {
-          totalCount += cart[item].count;
+          totalCount += Number(cart[item].count);
         }
         return totalCount;
       };
