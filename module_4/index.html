@@ -488,11 +488,11 @@
         var cartArray = shoppingCart.listCart();
         var output = "";
         for (var i in cartArray) {
-          output += `<tr><td><button type="button" class="delete-item btn-link btn-xs btn-danger"
-             data-name="${cartArray[i].name}" >x</button> ${cartArray[i].name} </td> <td> ${cartArray[i].price} X </td>
-            <td><div class="input-group"><input type="number" class="item-count form-control"
-            data-name="${cartArray[i].name}"  value="${cartArray[i].count}"></div></td>
-            <td></td> =<td>${cartArray[i].total}</td></tr>`;
+          output += `<tr><td  width="40%" nowrap> ${cartArray[i].name} </td> <td nowrap width="30%"> ${cartArray[i].price} X </td>
+            <td><input type="number" class="item-count border-solid border-2 border-indigo-300 text-center" style="width:80px"
+            data-name="${cartArray[i].name}"  value="${cartArray[i].count}"></td>
+              <td nowrap>${cartArray[i].total}Tk.<a href="javascript:;" class="delete-item btn-link btn-xs btn-danger fa fa-trash" 
+             data-name="${cartArray[i].name}" ></a></td></tr>`;
         }
         // let element = document.querySelector(".total-count");
         // element.textContent = "sadfasdf";
@@ -540,14 +540,18 @@
     <h5 class="modal-title" id="staticBackdropLabel">Your Cart</h5>
     <form method="dialog" class="modal-box">
       <div class="modal-body">
-        <table class="show-cart table"></table>
-        <div class="grand-total">
+        <table class="show-cart table w-100"></table>
+        <div class="grand-total text-right">
           <hr />
           Total price: <span class="total-cart"></span> Tk.
         </div>
       </div>
 
-      <button type="button" class="font-bold clear-cart" id="removeAll">
+      <button
+        type="button"
+        class="font-bold clear-cart btn btn-danger"
+        id="removeAll"
+      >
         Clear cart
       </button>
 
