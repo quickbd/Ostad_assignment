@@ -311,16 +311,15 @@
               <h4
                 class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition"
               >
-                ${item.title}
+                ${item.title}    <span class="text-xs text-gray-500 ml-3">(${item.brand})</span>
               </h4>
             </a>
+            <div class="text-sm flex text-gray-500  ">${item.description}</div>
             <div class="flex items-baseline mb-1 space-x-2">
               <p class="text-xl text-primary font-semibold">${productPrice} Tk.</p>
               <p class="text-sm text-gray-400 line-through">${item.price} Tk.</p>
             </div>
-            <div class="flex items-center"> 
-              <div class="text-xs text-gray-500 ml-3">({item.stock})</div>
-            </div>
+         
 
           </div>
           <a   href="javascript:;"  data-id="${item.id}" data-name="${item.title}" data-price="${productPrice}"
