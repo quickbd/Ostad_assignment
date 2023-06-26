@@ -94,7 +94,10 @@
         Product's Gallery
       </h2>
 
-      <div class="grid grid-cols-4 gap-6" id="productContent"></div>
+      <div
+        class="grid grid-cols-2 gap-4 md:grid-cols-6"
+        id="productContent"
+      ></div>
     </div>
     <!-- ./related product -->
 
@@ -279,15 +282,14 @@
             ).toFixed(2);
 
             document.getElementById("productContent").innerHTML += `
-        <div class="bg-white shadow rounded overflow-hidden group height-{100px}">
-          <div class="relative ">
+        <div class="bg-white shadow rounded  group">
+          <div class="relative  h-[200px] overflow-hidden">
             <img
               src="${item.thumbnail}"
               alt="${item.title}"
-              class="w-full  height-{100px}"
+              class="w-full  "
             />
-            <div
-              class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition"
+            <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition"
             >
               <a
                 href="#"
@@ -306,24 +308,33 @@
             </div>
           </div>
 
-          <div class="pt-4 pb-3 px-4">
+          <div class="pt-4 pb-3 px-4  h-[250px] overflow-hidden">
             <a href="#">
               <h4
                 class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition"
               >
-                ${item.title}    <span class="text-xs text-gray-500 ml-3">(${item.brand})</span>
+                ${item.title}  <br><span class="text-xs text-gray-500">(${
+              item.brand
+            })</span>
               </h4>
             </a>
-            <div class="text-sm flex text-gray-500  ">${item.description}</div>
+            <div class="text-sm flex text-gray-500  ">${item.description.substring(
+              0,
+              80
+            )} ...</div>
             <div class="flex items-baseline mb-1 space-x-2">
               <p class="text-xl text-primary font-semibold">${productPrice} Tk.</p>
-              <p class="text-sm text-gray-400 line-through">${item.price} Tk.</p>
+              <p class="text-sm text-gray-400 line-through">${
+                item.price
+              } Tk.</p>
             </div>
-         
+
 
           </div>
-          <a   href="javascript:;"  data-id="${item.id}" data-name="${item.title}" data-price="${productPrice}"
-            class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition addtocart"
+          <a   href="javascript:;"  data-id="${item.id}" data-name="${
+              item.title
+            }" data-price="${productPrice}"
+            class="bottom-0 block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition addtocart"
             >Add to cart</a>
         </div> `;
             console.log(item.title);
@@ -483,7 +494,7 @@
           output += `<tr><td  width="40%" nowrap> ${cartArray[i].name} </td> <td nowrap width="30%"> ${cartArray[i].price} X </td>
             <td><input type="number" class="item-count border-solid border-2 border-indigo-300 text-center" style="width:80px"
             data-name="${cartArray[i].name}"  value="${cartArray[i].count}"></td>
-              <td nowrap>${cartArray[i].total}Tk.<a href="javascript:;" class="delete-item btn-link btn-xs btn-danger fa fa-trash" 
+              <td nowrap>${cartArray[i].total}Tk.<a href="javascript:;" class="delete-item btn-link btn-xs btn-danger fa fa-trash"
              data-name="${cartArray[i].name}" ></a></td></tr>`;
         }
         // let element = document.querySelector(".total-count");
