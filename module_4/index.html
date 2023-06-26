@@ -19,32 +19,6 @@
 
       <div class="flex-none">
         <div class="dropdown dropdown-end">
-          <label
-            tabindex="0"
-            class="btn btn-ghost btn-circle"
-            onclick="myshoppingcart.showModal()"
-          >
-            <div class="indicator">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                />
-              </svg>
-
-              <span class="badge badge-sm indicator-item total-count">0</span>
-            </div>
-          </label>
-        </div>
-        <div class="dropdown dropdown-end">
           <label tabindex="0" class="btn btn-ghost btn-circle avatar">
             <div class="w-10 rounded-full">
               <img src="/assets/images/avatar.png" />
@@ -265,6 +239,228 @@
       </div>
     </div>
     <!-- ./copyright -->
+    <!-- ./shopping cart -->
+    <div class="relative z-10 hidden" id="rightShoppingCart">
+      aria-labelledby="slide-over-title" role="dialog" aria-modal="true" >
+      <!--
+        Background backdrop, show/hide based on slide-over state.
+    
+        Entering: "ease-in-out duration-500"
+          From: "opacity-0"
+          To: "opacity-100"
+        Leaving: "ease-in-out duration-500"
+          From: "opacity-100"
+          To: "opacity-0"
+      -->
+      <div
+        class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+        id="rightShoppingCartOpacity"
+      ></div>
+
+      <div class="fixed inset-0 overflow-hidden">
+        <div class="absolute inset-0 overflow-hidden">
+          <div
+            class="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10"
+          >
+            <!--
+              Slide-over panel, show/hide based on slide-over state.
+    
+              Entering: "transform transition ease-in-out duration-500 sm:duration-700"
+                From: "translate-x-full"
+                To: "translate-x-0"
+              Leaving: "transform transition ease-in-out duration-500 sm:duration-700"
+                From: "translate-x-0"
+                To: "translate-x-full"
+            -->
+            <div class="pointer-events-auto w-screen max-w-md">
+              <div
+                class="flex h-full flex-col overflow-y-scroll bg-white shadow-xl"
+              >
+                <div class="flex-1 overflow-y-auto px-4 py-6 sm:px-6">
+                  <div class="flex items-start justify-between">
+                    <h2
+                      class="text-lg font-medium text-gray-900"
+                      id="slide-over-title"
+                    >
+                      Shopping cart
+                    </h2>
+                    <div class="ml-3 flex h-7 items-center">
+                      <button
+                        id="closeCart"
+                        type="button"
+                        class="-m-2 p-2 text-gray-400 hover:text-gray-500"
+                      >
+                        <span class="sr-only">Close panel</span>
+                        <svg
+                          class="h-6 w-6"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke-width="1.5"
+                          stroke="currentColor"
+                          aria-hidden="true"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M6 18L18 6M6 6l12 12"
+                          />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="mt-8">
+                    <div class="flow-root">
+                      <ul
+                        role="list"
+                        class="-my-6 divide-y divide-gray-200 show-cart"
+                      >
+                        <li class="flex py-6">
+                          <div
+                            class="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200"
+                          >
+                            <img
+                              src="https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-01.jpg"
+                              alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt."
+                              class="h-full w-full object-cover object-center"
+                            />
+                          </div>
+
+                          <div class="ml-4 flex flex-1 flex-col">
+                            <div>
+                              <div
+                                class="flex justify-between text-base font-medium text-gray-900"
+                              >
+                                <h3>
+                                  <a href="#">Throwback Hip Bag</a>
+                                </h3>
+                                <p class="ml-4">$90.00</p>
+                              </div>
+                              <p class="mt-1 text-sm text-gray-500">Salmon</p>
+                            </div>
+                            <div
+                              class="flex flex-1 items-end justify-between text-sm"
+                            >
+                              <p class="text-gray-500">Qty 1</p>
+
+                              <div class="flex">
+                                <button
+                                  type="button"
+                                  class="font-medium text-indigo-600 hover:text-indigo-500"
+                                >
+                                  Remove
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li class="flex py-6">
+                          <div
+                            class="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200"
+                          >
+                            <img
+                              src="https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-02.jpg"
+                              alt="Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch."
+                              class="h-full w-full object-cover object-center"
+                            />
+                          </div>
+
+                          <div class="ml-4 flex flex-1 flex-col">
+                            <div>
+                              <div
+                                class="flex justify-between text-base font-medium text-gray-900"
+                              >
+                                <h3>
+                                  <a href="#">Medium Stuff Satchel</a>
+                                </h3>
+                                <p class="ml-4">$32.00</p>
+                              </div>
+                              <p class="mt-1 text-sm text-gray-500">Blue</p>
+                            </div>
+                            <div
+                              class="flex flex-1 items-end justify-between text-sm"
+                            >
+                              <p class="text-gray-500">Qty 1</p>
+
+                              <div class="flex">
+                                <button
+                                  type="button"
+                                  class="font-medium text-indigo-600 hover:text-indigo-500"
+                                >
+                                  Remove
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+
+                        <!-- More products... -->
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="border-t border-gray-200 px-4 py-6 sm:px-6">
+                  <div
+                    class="flex justify-between text-base font-medium text-gray-900"
+                  >
+                    <p>Subtotal</p>
+                    <p class="total-cart">0.00</p>
+                  </div>
+                  <p class="mt-0.5 text-sm text-gray-500">
+                    Shipping and taxes calculated at checkout.
+                  </p>
+                  <div class="mt-6">
+                    <button
+                      type="button"
+                      class="flex items-center justify-center rounded-md border border-transparent btn-block mb-6 clear-cart btn btn-danger"
+                      id="removeAll"
+                    >
+                      Clear cart
+                    </button>
+
+                    <a
+                      href="#"
+                      class="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+                      >Checkout</a
+                    >
+                  </div>
+                  <div
+                    class="mt-6 flex justify-center text-center text-sm text-gray-500"
+                  >
+                    <p>
+                      or
+                      <button
+                        type="button"
+                        class="font-medium text-indigo-600 hover:text-indigo-500"
+                      >
+                        Continue Shopping
+                        <span aria-hidden="true"> &rarr;</span>
+                      </button>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      id="myShoppingCart"
+      class="fixed z-5 top-[45%] right-0 w-20 h-20 text-center bg-blue-500 shadow-md drop-shadow-md rounded-5"
+    >
+      <div class="p-3">
+        <i class="fa fa-shopping-basket fa-2x text-white"></i>
+        <div class="text-white text-xs">
+          <span class="indicator-item total-count">0</span> ITEMS
+        </div>
+      </div>
+      <div class="bg-slate-300 p-1 text-xs">
+        <span class="total-cart">0</span> Tk.
+      </div>
+    </div>
   </body>
 
   <script src="./assets/js/axios.min.js"></script>
@@ -331,9 +527,11 @@
 
 
           </div>
-          <a   href="javascript:;"  data-id="${item.id}" data-name="${
+          <a   href="javascript:;"  data-thumbnail="${
+            item.thumbnail
+          }" data-name="${
               item.title
-            }" data-price="${productPrice}"
+            }" data-price="${productPrice}" data-brand="${item.brand}"
             class="bottom-0 block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition addtocart"
             >Add to cart</a>
         </div> `;
@@ -352,9 +550,11 @@
       cart = [];
       var obj = {};
 
-      function Item(name, price, count) {
+      function Item(name, price, thumbnail, brand, count) {
         this.name = name;
+        this.brand = brand;
         this.price = price;
+        this.thumbnail = thumbnail;
         this.count = count;
       }
 
@@ -372,7 +572,7 @@
       }
 
       // Add to cart
-      obj.addItemToCart = function (name, price, count) {
+      obj.addItemToCart = function (name, price, thumbnail, brand, count) {
         for (var item in cart) {
           if (cart[item].name === name) {
             cart[item].count++;
@@ -380,7 +580,7 @@
             return;
           }
         }
-        var item = new Item(name, price, count);
+        var item = new Item(name, price, thumbnail, brand, count);
         cart.push(item);
         saveCart();
       };
@@ -469,11 +669,12 @@
       addtocart.forEach((el) =>
         el.addEventListener("click", (event) => {
           event.preventDefault();
-
+          let thumbnail = event.target.getAttribute("data-thumbnail");
           var name = event.target.getAttribute("data-name");
-          var id = event.target.getAttribute("data-id");
+          var brand = event.target.getAttribute("data-brand");
+
           var price = Number(event.target.getAttribute("data-price"));
-          shoppingCart.addItemToCart(name, price, 1);
+          shoppingCart.addItemToCart(name, price, thumbnail, brand, 1);
           displayCart();
           //console.log(event.target.getAttribute("data-price"));
         })
@@ -491,20 +692,60 @@
         var cartArray = shoppingCart.listCart();
         var output = "";
         for (var i in cartArray) {
-          output += `<tr><td  width="40%" nowrap> ${cartArray[i].name} </td> <td nowrap width="30%"> ${cartArray[i].price} X </td>
-            <td><input type="number" class="item-count border-solid border-2 border-indigo-300 text-center" style="width:80px"
-            data-name="${cartArray[i].name}"  value="${cartArray[i].count}"></td>
-              <td nowrap>${cartArray[i].total}Tk.<a href="javascript:;" class="delete-item btn-link btn-xs btn-danger fa fa-trash"
-             data-name="${cartArray[i].name}" ></a></td></tr>`;
+          output += `<li class="flex py-6">
+                          <div
+                            class="h-10 w-10 flex-shrink-0 overflow-hidden rounded-md border border-gray-200"
+                          >
+                            <img
+                              src="${cartArray[i].thumbnail}"
+                              alt="${cartArray[i].name}"
+                              class="h-full w-full object-cover object-center"
+                            />
+                          </div>
+
+                          <div class="ml-4 flex flex-1 flex-col">
+                            <div>
+                              <div
+                                class="flex justify-between text-base font-medium text-gray-900"
+                              >
+                                <h3>
+                                  <a href="#">${cartArray[i].name}</a>
+                                </h3>
+                                <p class="ml-4"> ${cartArray[i].total} Tk.</p>
+                              </div>
+                              <p class="mt-1 text-sm text-gray-500"> ${cartArray[i].brand} </p>
+                            </div>
+                            <div
+                              class="flex flex-1 items-end justify-between text-sm"
+                            >
+                              <p class="text-gray-500">${cartArray[i].price} Tk. X Qty <input type="number" class="item-count border-solid border-2 border-indigo-300 text-center" style="width:80px"
+            data-name="${cartArray[i].name}"  value="${cartArray[i].count}"></p>
+
+                              <div class="flex">
+                                <button
+                                  type="button" data-name="${cartArray[i].name}"
+                                  class="font-medium text-indigo-600 hover:text-indigo-500 delete-item"
+                                >
+                                  Remove
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </li>`;
         }
         // let element = document.querySelector(".total-count");
         // element.textContent = "sadfasdf";
 
         document.querySelector(".show-cart").innerHTML = output;
-        document.querySelector(".total-cart").innerHTML =
-          shoppingCart.totalCart();
+
         document.querySelector(".total-count").innerHTML =
           shoppingCart.totalCount();
+
+        var elements = document.getElementsByClassName("total-cart");
+        for (var i = 0; i < elements.length; i++) {
+          elements[i].innerHTML = shoppingCart.totalCart();
+        }
+
         deleteCart();
       }
 
@@ -537,31 +778,17 @@
 
       displayCart();
     };
+
+    // show right side shoppingcart items
+    const myShoppingCart = document.getElementById("myShoppingCart");
+
+    myShoppingCart.addEventListener("click", () => {
+      document.getElementById("rightShoppingCart").classList.remove("hidden");
+    });
+    //////close right side view cart
+    const closeCartEvent = document.getElementById("closeCart");
+    closeCartEvent.addEventListener("click", () => {
+      document.getElementById("rightShoppingCart").classList.add("hidden");
+    });
   </script>
-
-  <dialog id="myshoppingcart" class="modal modal-bottom sm:modal-middle">
-    <h5 class="modal-title" id="staticBackdropLabel">Your Cart</h5>
-    <form method="dialog" class="modal-box">
-      <div class="modal-body">
-        <table class="show-cart table w-100"></table>
-        <div class="grand-total text-right">
-          <hr />
-          Total price: <span class="total-cart"></span> Tk.
-        </div>
-      </div>
-
-      <button
-        type="button"
-        class="font-bold clear-cart btn btn-danger"
-        id="removeAll"
-      >
-        Clear cart
-      </button>
-
-      <div class="modal-action text-right">
-        <!-- if there is a button in form, it will close the modal -->
-        <button class="btn">Close</button>
-      </div>
-    </form>
-  </dialog>
 </html>
