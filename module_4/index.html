@@ -487,9 +487,9 @@
 
 
           </div>
-          <a   href="javascript:;"  data-thumbnail="${
-            item.thumbnail
-          }" data-name="${
+          <a   href="javascript:;" data="${item}"  data-thumbnail="${
+              item.thumbnail
+            }" data-name="${
               item.title
             }" data-price="${productPrice}" data-brand="${item.brand}"
             class="bottom-0 block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition addtocart"
@@ -629,11 +629,14 @@
       addtocart.forEach((el) =>
         el.addEventListener("click", (event) => {
           event.preventDefault();
-          let thumbnail = event.target.getAttribute("data-thumbnail");
-          var name = event.target.getAttribute("data-name");
-          var brand = event.target.getAttribute("data-brand");
+          //let data = event.target.getAttribute("data");
+          //alert(data.title);
 
-          var price = Number(event.target.getAttribute("data-price"));
+          let thumbnail = event.target.getAttribute("data-thumbnail");
+          let name = event.target.getAttribute("data-name");
+          let brand = event.target.getAttribute("data-brand");
+
+          let price = Number(event.target.getAttribute("data-price"));
           shoppingCart.addItemToCart(name, price, thumbnail, brand, 1);
           displayCart();
           //console.log(event.target.getAttribute("data-price"));
