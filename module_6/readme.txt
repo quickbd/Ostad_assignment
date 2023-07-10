@@ -15,5 +15,8 @@ The Header component should receive a prop for the title and display it as the h
 The Content component should contain a state variable to store the text entered in the text area. It should also have a button that triggers a function to update the state variable with the text from the text area. Finally, it should display the entered text below the button.
 The Footer component should display some information about yourself or your favorite quote. Feel free to be creative here.
 
+*** I have Install the project by Vite -> ReactJS framework and used javascript
+Also using daisyUI and tailwind consist
+
 Submission Instruction :
 Project link: https://64ac14477efa0b007a8f4ea3--willowy-biscochitos-35b3a3.netlify.app/
