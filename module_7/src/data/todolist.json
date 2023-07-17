@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "date": "12/04/2023",
+    "todo": "Where are these chairs assembled?"
+  },
+  {
+    "id": 2,
+    "date": "15/05/2023",
+    "todo": "How long do I have to return my chair?"
+  },
+  {
+    "id": 3,
+    "date": "17/06/2023",
+    "todo": "Do you ship to countries outside the EU?"
+  }
+]

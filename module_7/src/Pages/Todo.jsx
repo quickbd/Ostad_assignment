@@ -1,25 +1,128 @@
-import Todolist from "../Components/todo/Todolist";
-import todolist from "../data/todolist.js";
+import { useState } from "react";
+
 const Todo = () => {
-    return (
-        <>
-        <div  className="flex flex-wrap 
-        justify-between mx-auto my-5" >
- 
-            <div className='grid grid-cols-3'>
-            <div className="form-group">
-            <textarea className="textarea textarea-bordered form-control w-full h-[200px]" placeholder="Todo" onClick={(e)=>e.target.value}></textarea>
-            <button className="btn  rounded-0 btn-primary mt-2 float-right">Add Todo</button>
-        
+  const [todolist, setTodolist] = useState([]);
+
+  const [todo, setTodo] = useState("");
+  const [completedtodo, setcCompletedtodo] = useState([""]);
+
+  const handleAddTodo = (todo) => {
+    setTodolist((todolist) => [...todolist, todo]);
+  };
+  const handleDeleteTask = (taskIndex) => {
+    setTodolist(todolist.filter((_, index) => index !== taskIndex));
+  };
+
+  const handleCompleteTask = (taskIndex) => {
+    // alert(taskIndex)
+    setcCompletedtodo((completedtodo) => [
+      ...completedtodo,
+      todolist[taskIndex],
+    ]);
+    setTodolist(todolist.filter((_, index) => index !== taskIndex));
+  };
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const id = crypto.randomUUID();
+
+    const newTodo = {
+      id,
+      todo,
+      date: new Date().toLocaleDateString(),
+    };
+    console.log(newTodo);
+    handleAddTodo(newTodo);
+    setTodo("");
+  }
+  return (
+    <>
+      <div className="my-5">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+          <div className=" ">
+            <form onSubmit={handleSubmit}>
+              <div className="form-group w-full">
+                <textarea
+                  required
+                  name="todo"
+                  className="textarea textarea-bordered form-control w-full h-[200px]"
+                  placeholder="Todo"
+                  onChange={(e) => setTodo(e.target.value)}
+                  value={todo}
+                ></textarea>
+                <button
+                  type="submit"
+                  className="btn  rounded-0 btn-primary mt-2 float-right"
+                >
+                  Add Todo
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <div className=" ">
+            <ul className="max-w-md divide-y divide-gray-200 dark:divide-gray-700">
+              {todolist.map((task, index) => (
+                <li className="pb-3 sm:pb-4" key={index}>
+                  <div className="flex items-left space-x-4">
+                    <div className="flex-1 min-w-0">
+                      <p className="text-sm font-medium text-gray-900 truncate dark:text-white">
+                        {task.date}
+                      </p>
+                      <p className="text-sm text-gray-500 truncate dark:text-gray-400">
+                        {task.todo}
+                      </p>
+                    </div>
+
+                    <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+                      <button
+                        className="btn btn-xs  "
+                        onClick={() => handleDeleteTask(index)}
+                      >
+                        Delete
+                      </button>
+                      <button
+                        className="btn btn-xs btn-success"
+                        onClick={() => handleCompleteTask(index)}
+                      >
+                        Complete
+                      </button>
+                    </div>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className=" ">
+            <div className="block rounded-lg bg-white text-center shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+              <div className="border-b-2 text-xl border-neutral-100 px-6 py-3 dark:border-neutral-600 dark:text-neutral-50">
+                Completed Tasks
+              </div>
+              <div className="p-6 pt-0">
+                <ul className="max-w-md divide-y-reverse divide-y  divide-gray-200 dark:divide-gray-700">
+                  {completedtodo.map((task, index) => (
+                    <li className="pb-0 pt-1 sm:pb-2" key={index}>
+                      <div className="flex text-left space-x-4">
+                        <div className="flex-1 min-w-0">
+                          <p className="text-sm font-medium text-gray-900 truncate dark:text-white">
+                            {task.date}
+                          </p>
+                          <p className="text-sm text-gray-500 truncate dark:text-gray-400">
+                            {task.todo}
+                          </p>
+                        </div>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
-            <div className='grid grid-cols-6'>
-         
-                <Todolist data={todolist} />
-            </div>
-            </div>
+          </div>
         </div>
-        </>
-    );
+      </div>
+    </>
+  );
 };
 
 export default Todo;
