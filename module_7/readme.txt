@@ -6,3 +6,5 @@ Add Task Functionality: Implement a button or submit action that allows the user
 Task List: Display the list of tasks added by the user. Each task should be rendered as an item in the list, showing the task description and an option to mark it as complete or delete it.
 Remove Task Functionality: Add a delete button or icon for each task in the list. When the user clicks the delete button, the corresponding task should be removed from the list in the state using the useState() hook.
 
+#Assignment Link:
+https://ostadassignment-7.netlify.app
