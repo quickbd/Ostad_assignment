@@ -1,0 +1,6 @@
+মডিউল ৮ এর এসাইনমেন্ট
+Assignment: Create a React web application that allows users to track their income and expenses. The application should have two main pages: one for entering income transactions and another for entering expense transactions. Users should be able to switch between these pages using React router dom.
+
+
+#Assignment Link:
+https://ostadassignment-7.netlify.app
