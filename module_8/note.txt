@@ -3,4 +3,4 @@ Assignment: Create a React web application that allows users to track their inco
 
 
 #Assignment Link:
-https://ostadassignment-7.netlify.app
+https://quickbd.net/ostad_pro/module8/
